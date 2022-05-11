@@ -8,7 +8,7 @@ const Review = ({ review }) => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non quo ex, excepturi inventore quis aut?</p>
                 <div className="flex items-center">
                     <div className="avatar">
-                        <div className="w-16 rounded-full ring ring-primary ring-offset-base-100 mr-5">
+                        <div className="w-16 rounded-full ring ring-[#0FCFEC] ring-offset-base-100 mr-5">
                             <img src={review.img} alt="" />
                         </div>
                     </div>

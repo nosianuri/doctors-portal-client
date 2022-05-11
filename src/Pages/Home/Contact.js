@@ -6,23 +6,23 @@ const Contact = () => {
     return (
         <div style={{
             background: `url(${appointment})`
-        }} className='justify-center items-center	'>
+        }}>
             <div className='text-center'>
-                <h3 className='text-primary text-xl font-bold-uppercase'>Contact Us</h3>
-                <h2 className='text-4xl'>Stay connected with us</h2>
+                <h3 className='text-[#0FCFEC] text-xl font-bold-uppercase'>Contact Us</h3>
+                <h2 className='text-4xl text-white'>Stay connected with us</h2>
             </div>
-            <div class="card -center max-w-sm shadow-2xl ">
-                <div class="card-body">
-                    <div class="form-control">
-                        <input type="text" placeholder="email address" class="input input-bordered" />
+            <div className="card max-w-sm shadow-2xl ">
+                <div className="card-body">
+                    <div className="form-control">
+                        <input type="text" placeholder="email address" className="input input-bordered" />
                     </div>
-                    <div class="form-control">
-                        <input type="text" placeholder="subject" class="input input-bordered" />
+                    <div className="form-control">
+                        <input type="text" placeholder="subject" className="input input-bordered" />
                     </div>
                     <div className='form-control'>
-                        <input type="text" placeholder='Your Message' class="input input-bordered" />
+                        <input type="text" placeholder='Your Message' className="input input-bordered" />
                     </div>
-                    <div class="form-control mt-6">
+                    <div className="form-control mt-6">
                         <PrimaryButton>Submit</PrimaryButton>
                     </div>
                 </div>
