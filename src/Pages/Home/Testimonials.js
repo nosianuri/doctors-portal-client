@@ -28,7 +28,8 @@ const Testimonials = () => {
             review: 'Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a 1st-century BC text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical and improper Latin.',
             img: people3
         }
-    ]
+    ];
+    
     return (
         <section className='my-28'>
             <div className='flex justify-between'>
