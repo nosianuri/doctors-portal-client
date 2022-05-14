@@ -11,7 +11,7 @@ const Service = ({ service, setTreatment }) => {
                     {
                         slots.length > 0
                             ? <span>{slots[0]}</span>
-                            : <span className='text-red-500'> Try another date</span>
+                            : <span className='text-red-500'> Try another date.</span>
                     }
                 </p>
                 <p>{slots.length} {slots.length > 1 ? 'spaces' : 'space'} available</p>
