@@ -7,7 +7,7 @@ import useToken from '../../hooks/useToken';
 import Loading from '../Shared/Loading';
 
 const SignUp = () => {
-    const [signInWithGoogle, guser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
     
     const [
@@ -17,20 +17,20 @@ const SignUp = () => {
         error,
       ] = useCreateUserWithEmailAndPassword(auth);
 
-      let signInError;
-
       const [updateProfile, updating, UpdateError] = useUpdateProfile(auth);
 
-      const [token] = useToken(user || guser);
+      const [token] = useToken(user || gUser);
 
       const navigate = useNavigate();
 
-      if(loading || gloading){
+      let signInError;
+
+      if(loading || gLoading || updating){
           return <Loading></Loading>
       }
 
-      if(error || gerror || UpdateError){
-          signInError = <p className='text-red-500'><small>{error?.message || gerror?.message ||  UpdateError?.message}</small></p>
+      if(error || gError || UpdateError){
+          signInError = <p className='text-red-500'><small>{error?.message || gError?.message ||  UpdateError?.message}</small></p>
       }
 
     if (token) {
@@ -40,14 +40,14 @@ const SignUp = () => {
     const onSubmit = async data => {
         await createUserWithEmailAndPassword(data.email, data.password);
         await updateProfile({ displayName: data.name});
-        console.log('update done');
-        
-    };
+        console.log('update done');        
+    }
+    
     return (
         <div className='flex h-screen justify-center items-center'>
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
-                    <h2 className="text-center text-2xl font bold">SignUp</h2>
+                    <h2 className="text-center text-2xl font bold">Sign Up</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
 
                         <div className="form-control w-full max-w-xs">
@@ -90,8 +90,7 @@ const SignUp = () => {
                             />
                             <label className="label">
                             {errors.email?.type === 'required' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
-                                
+                            {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}                                
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
@@ -115,13 +114,12 @@ const SignUp = () => {
                             />
                             <label className="label">
                             {errors.password?.type === 'required' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                            {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}
-                                
+                            {errors.password?.type === 'minLength' && <span className="label-text-alt text-red-500">{errors.password.message}</span>}                                
                             </label>
                         </div>
 
                         {signInError}
-                        <input className='btn w-full max-w-xs text-white' type="submit" value="Signup" />
+                        <input className='btn w-full max-w-xs text-white' type="submit" value="Sign up" />
                     </form>
                     <p><small>Already have an account? <Link className='text-primary' to="/login">Please login</Link></small></p>
                     <div className='divider'>OR</div>

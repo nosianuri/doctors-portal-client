@@ -6,39 +6,39 @@ import auth from '../../firebase.init';
 
 const MyAppointment = () => {
 
-    const [appointment, setAppointment] = useState([]);
+    const [appointments, setAppointments] = useState([]);
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
 
     useEffect(() => {
         if (user) {
-            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+            fetch(`https://pacific-tundra-12262.herokuapp.com/booking?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
             })
                 .then(res => {
-                    console.log('res', res)
+                    console.log('res', res);
                     if (res.status === 401 || res.status === 403) {
                         signOut(auth);
-                        localStorage.removeItem(`accessToken`);
+                        localStorage.removeItem('accessToken');
                         navigate('/');
                     }
-                    return res.json()
+                    return res.json();
                 })
                 .then(data => {
-                    setAppointment(data);
-                })
+
+                    setAppointments(data);
+                });
         }
     }, [user]);
 
     return (
         <div>
-            <h1> my Appointments: {appointment.length}</h1>
-            <div class="overflow-x-auto">
-                <table class="table w-full">
-
+            <h1> my Appointments: {appointments.length}</h1>
+            <div className="overflow-x-auto">
+                <table className="table w-full">
                     <thead>
                         <tr>
                             <th></th>
@@ -50,7 +50,7 @@ const MyAppointment = () => {
                     </thead>
                     <tbody>
                         {
-                            appointment.map((a, index) => <tr>
+                            appointments.map((a, index) => <tr>
                                 <th>{index + 1}</th>
                                 <td>{a.patientName}</td>
                                 <td>{a.date}</td>
@@ -58,9 +58,6 @@ const MyAppointment = () => {
                                 <td>{a.treatment}</td>
                             </tr>)
                         }
-
-
-
                     </tbody>
                 </table>
             </div>

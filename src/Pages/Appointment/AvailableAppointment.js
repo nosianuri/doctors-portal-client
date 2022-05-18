@@ -1,19 +1,17 @@
 import { format } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../Shared/Loading';
-import BookingModal from '../Service/BookingModal';
-import Service from '../Service/Service';
+import BookingModal from './BookingModal';
+import Service from './Service';
 
 
 const AvailableAppointment = ({ date }) => {
-    // const [Services, setServices] = useState([]);
     const [treatment, setTreatment] = useState(null);
 
     const formattedDate = format(date, 'PP');
-    const { data: services, isLoading, refetch } = useQuery(['available', formattedDate], () => fetch(`http://localhost:5000/available?date=${formattedDate}`)
-        .then(res => res.json())
-    )
+    const { data: services, isLoading, refetch } = useQuery(['available', formattedDate], () => fetch(`https://pacific-tundra-12262.herokuapp.com/available?date=${formattedDate}`)
+        .then(res => res.json()))
 
     if (isLoading) {
         return <Loading></Loading>
@@ -26,7 +24,7 @@ const AvailableAppointment = ({ date }) => {
             </h4>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
-                    services?.map(service => <Service
+                    services.map(service => <Service
                         key={service._id}
                         service={service}
                         setTreatment={setTreatment}

@@ -7,8 +7,8 @@ const Appointment = () => {
     const [date, setDate] = useState(new Date());
     return (
         <div>
-        <AppointmentBanner date={date} setDate={setDate}></AppointmentBanner>
-        <AvailableAppointment  date={date}></AvailableAppointment>
+            <AppointmentBanner date={date} setDate={setDate}></AppointmentBanner>
+            <AvailableAppointment date={date}></AvailableAppointment>
             <Footer></Footer>
         </div>
     );
