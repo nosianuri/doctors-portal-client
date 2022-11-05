@@ -7,9 +7,9 @@ import Loading from '../Shared/Loading';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('http://localhost:5000/service').then(res => res.json()));
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://pacific-tundra-12262.herokuapp.com/service').then(res => res.json()));
 
-    const imageStorageKey='0e111abe7d39827ab6edd78c23158034';
+    const imageStorageKey = '0e111abe7d39827ab6edd78c23158034';
 
     /**
      * 3 ways to store images
@@ -28,38 +28,38 @@ const AddDoctor = () => {
             method: 'POST',
             body: formData
         })
-        .then(res =>res.json())
-        .then(result =>{
-            if(result.success){
-                const img = result.data.url;
-                const doctor = {
-                    name: data.name,
-                    email: data.email,
-                    specialty: data.specialty,
-                    img: img
+            .then(res => res.json())
+            .then(result => {
+                if (result.success) {
+                    const img = result.data.url;
+                    const doctor = {
+                        name: data.name,
+                        email: data.email,
+                        specialty: data.specialty,
+                        img: img
+                    }
+                    // send to your database
+                    fetch('http;//localhost:5000/doctor', {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            authorization: `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify(doctor)
+                    })
+                        .then(res => res.json())
+                        .then(inserted => {
+                            if (inserted.insertedId) {
+                                toast.success('Doctor added successfully')
+                                reset();
+                            }
+                            else {
+                                toast.error('Failed to add the doctor');
+                            }
+                        })
                 }
-                // send to your database
-                fetch('http;//localhost:5000/doctor', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json',
-                        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-                    },
-                    body: JSON.stringify(doctor)
-                })
-                .then(res => res.json())
-                .then(inserted => {
-                    if(inserted.insertedId){
-                        toast.success('Doctor added successfully')
-                        reset();
-                    }
-                    else{
-                        toast.error('Failed to add the doctor');
-                    }
-                })
-            }
-            
-        })
+
+            })
     };
 
     if (isLoading) {
@@ -148,7 +148,7 @@ const AddDoctor = () => {
                         {errors.name?.type === 'required' && <span className="label-text-alt text-red-500">{errors.name.message}</span>}
                     </label>
                 </div>
-                
+
                 <input className='btn w-full max-w-xs text-white' type="submit" value="Add" />
             </form>
         </div>

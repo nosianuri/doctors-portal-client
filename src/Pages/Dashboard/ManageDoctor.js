@@ -7,7 +7,7 @@ import DoctorRow from './DoctorRow';
 const ManageDoctor = () => {
     const [deletingDoctor, setDeletingDoctor] = useState(null);
 
-    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('http://localhost:5000/doctor', {
+    const { data: doctors, isLoading, refetch } = useQuery('doctors', () => fetch('https://pacific-tundra-12262.herokuapp.com/doctor', {
         headers: {
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -33,12 +33,12 @@ const ManageDoctor = () => {
                     </thead>
                     <tbody>
                         {
-                            doctors.map((doctor, index)=> <DoctorRow
-                            key={doctor._key}
-                            doctor={doctor}
-                            index={index}
-                            refetch={refetch}
-                            setDeletingDoctor={setDeletingDoctor}
+                            doctors.map((doctor, index) => <DoctorRow
+                                key={doctor._key}
+                                doctor={doctor}
+                                index={index}
+                                refetch={refetch}
+                                setDeletingDoctor={setDeletingDoctor}
                             ></DoctorRow>)
                         }
                     </tbody>
