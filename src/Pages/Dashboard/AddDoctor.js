@@ -7,7 +7,7 @@ import Loading from '../Shared/Loading';
 const AddDoctor = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
 
-    const { data: services, isLoading } = useQuery('services', () => fetch('https://pacific-tundra-12262.herokuapp.com/service').then(res => res.json()));
+    const { data: services, isLoading } = useQuery('services', () => fetch('https://pacific-tundra-12262.herokuapp.com/services').then(res => res.json()));
 
     const imageStorageKey = '0e111abe7d39827ab6edd78c23158034';
 

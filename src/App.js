@@ -19,6 +19,7 @@ import AddDoctor from './Pages/Dashboard/AddDoctor';
 import ManageDoctor from './Pages/Dashboard/ManageDoctor';
 import Payment from './Pages/Dashboard/Payment';
 import Notfound from './Pages/NotFound/Notfound';
+import Contact from './Pages/Home/Contact';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
             <Appointment />
           </RequireAuth>
         } />
+        <Route path="review" element={<MyReview />} />
+        <Route path="contact" element={<Contact />} />
         <Route path="dashboard" element={<RequireAuth><Dashboard /></RequireAuth>}>
           <Route index element={<MyAppointment></MyAppointment>}></Route>
           <Route path='review' element={<MyReview></MyReview>}></Route>

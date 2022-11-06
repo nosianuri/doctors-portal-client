@@ -20,9 +20,9 @@ const About = () => {
             </div>
             {/* section 2 */}
             <div className="flex flex-col w-full lg:flex-row">
-                <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center text-neutral">Discussing Health Decisions with Your Doctor</div>
+                <div className="grid flex-grow h-32 card bg-base-200 rounded-box place-items-center text-neutral">Discussing Health Decisions with Your Doctor</div>
                 <div className="divider lg:divider-horizontal text-neutral">OR</div>
-                <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center text-neutral">Online Doctor Consultation via Video Call / Audio / Chat</div>
+                <div className="grid flex-grow h-32 card bg-base-200 rounded-box place-items-center text-neutral">Online Doctor Consultation via Video Call / Audio / Chat</div>
             </div>
             {/* sec - 2 */}
             <div className="hero min-h-screen">
