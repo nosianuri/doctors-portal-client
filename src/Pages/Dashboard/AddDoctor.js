@@ -11,14 +11,7 @@ const AddDoctor = () => {
 
     const imageStorageKey = '0e111abe7d39827ab6edd78c23158034';
 
-    /**
-     * 3 ways to store images
-     * 1. Third party storage // Free open public storage is ok for practice project
-     * 2. Your own storage in your own server (file system)
-     * 3. Database: mongodb
-     * 
-     * YUP: to validate file: Search: Yup file validation for react hook form
-    */
+    
     const onSubmit = async data => {
         const image = data.image[0];
         const formData = new FormData();
@@ -39,7 +32,7 @@ const AddDoctor = () => {
                         img: img
                     }
                     // send to your database
-                    fetch('http;//localhost:5000/doctor', {
+                    fetch('https://pacific-tundra-12262.herokuapp.com/doctor', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -97,7 +90,7 @@ const AddDoctor = () => {
                     </label>
                     <input
                         type="email"
-                        placeholder="Your email"
+                        placeholder="Your Email"
                         className="input input-bordered w-full max-w-xs"
                         {...register("email", {
                             required: {

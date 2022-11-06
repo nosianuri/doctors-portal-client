@@ -1,9 +1,10 @@
 import React from 'react';
+import Services from '../Home/Services';
 
 const MyHistory = () => {
     return (
         <div>
-            <h1>This is My treatment History</h1>
+            <Services />
         </div>
     );
 };

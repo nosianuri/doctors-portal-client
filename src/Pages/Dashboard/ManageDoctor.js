@@ -18,8 +18,8 @@ const ManageDoctor = () => {
     }
 
     return (
-        <div>
-            <h2 className="text-2xl">Manage Doctors: {doctors.length}</h2>
+        <div className='mt-5'>
+            {/* <h2 className="text-2xl">Manage Doctors: {doctors.length}</h2> */}
             <div class="overflow-x-auto">
                 <table class="table w-full">
                     <thead>

@@ -35,8 +35,8 @@ const MyAppointment = () => {
     }, [user]);
 
     return (
-        <div>
-            <h1> my Appointments: {appointments.length}</h1>
+        <div className='mt-5'>
+            {/* <h1> my Appointments: {appointments.length}</h1> */}
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>

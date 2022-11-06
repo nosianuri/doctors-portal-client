@@ -14,8 +14,8 @@ const Users = () => {
         return <Loading></Loading>
     }
     return (
-        <div>
-            <h2 className="text-2xl">All Users: {users.length}</h2>
+        <div className='mt-5'>
+            {/* <h2 className="text-2xl">All Users: {users.length}</h2> */}
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     <thead>
